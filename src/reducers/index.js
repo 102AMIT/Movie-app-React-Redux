@@ -35,7 +35,8 @@ const movies = (state = initialMoviesState ,action) => {
             }
         // here we are removing/filtering favourites movies from the favourites array 
         case REMOVE_FROM_FAVOURITE:
-            const filteredArray = state.favourites.filter(movie => movie.titile !== action.movie.title);
+            const filteredArray = state.favourites.filter((movie) => movie.Title !== action.movie.Title);
+            console.log(filteredArray , "fileterarray");
             return {
                 ...state,
                 favourites: filteredArray
