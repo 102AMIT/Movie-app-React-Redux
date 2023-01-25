@@ -4,13 +4,14 @@ import Navbar from './Navbar';
 import MovieCard from './MovieCard';
 import { displaymovie } from '../actions';
 import { useSelector, useDispatch } from 'react-redux';
-
 function App() {
-  const movies = useSelector(state => state.list); //useSelector look for the full store and look for the changes and refect the changes in components
+  const movies = useSelector(state => state.list);
+  const favourites = useSelector(state => state.favourites); //useSelector look for the full store and look for the changes and refect the changes in components
   // console.log(movies);
+  console.log("favourites",favourites);
   const dispatch = useDispatch(); // it's is a hook for store.
   // setUser will return an object with type and payload.Dispatch will take this object and look through the reducers that match the action type.
-    // console.log(dispatch);
+  // console.log(dispatch);
 
     useEffect(() => {
       const renderMovies = () => {
@@ -19,7 +20,16 @@ function App() {
       renderMovies();
     }, [dispatch]);
 
-
+    // here we are checking the movies is favorites or not 
+    const isMovieFavourite = (movie) => {
+      const index = favourites.indexOf(movie);//if index not found return -1;
+      if (index > -1) {
+        // found the movie
+        return true;
+      } else {
+        return false;
+      }
+    }
   return (
 
     <div className="App">
@@ -32,7 +42,7 @@ function App() {
         </div>
         <div className="list">
           {movies.map((movie, index) => {
-            return <MovieCard movie={movie} key={`movies-${index}`} />
+            return <MovieCard movie={movie} key={`movies-${index}`}  isFavourite={isMovieFavourite(movie)}/>
           })}
         </div>
       </div>
