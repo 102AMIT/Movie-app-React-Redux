@@ -3,13 +3,16 @@ import { useDispatch } from 'react-redux';
 import { addToFavourite ,removeFromFavourites } from '../actions';
 
 const MovieCard = (props) => {
+    // getting movie and isFavourite in props from app component
     const {movie , isFavourite} =props;
-    const dispatch =useDispatch();
-
+    const dispatch =useDispatch();//using dispatch hook to dispatch the action
+    
+    // favourite button click
     const handleFavouriteClick = () =>{
         dispatch(addToFavourite(movie));
     }
 
+    // Unfavourite button click
     const handleUnfavouriteClick = () =>{
         dispatch(removeFromFavourites(movie));
     }
@@ -24,7 +27,7 @@ const MovieCard = (props) => {
             <div className="footer">
                 <div className="rating">{movie.imdbRating}</div>
 
-                {
+                {   //conditional rendering
                     isFavourite ? 
                     <button className="unfavourite-btn" onClick={handleUnfavouriteClick}>Unfavourite</button>
                     :

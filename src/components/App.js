@@ -5,14 +5,18 @@ import MovieCard from './MovieCard';
 import { displaymovie } from '../actions';
 import { useSelector, useDispatch } from 'react-redux';
 function App() {
+   //Using useSelector hook for continiously looking for the changes in store and refect the changes in components
   const movies = useSelector(state => state.list);
-  const favourites = useSelector(state => state.favourites); //useSelector look for the full store and look for the changes and refect the changes in components
+  const favourites = useSelector(state => state.favourites);
   // console.log(movies);
-  console.log("favourites",favourites);
+  // console.log("favourites",favourites);
   const dispatch = useDispatch(); // it's is a hook for store.
-  // setUser will return an object with type and payload.Dispatch will take this object and look through the reducers that match the action type.
+  // setUser will return an object with type and payload.Dispatch will take this object and look 
+  //through the reducers that match the action type.
   // console.log(dispatch);
 
+
+  // initial rendinging 
     useEffect(() => {
       const renderMovies = () => {
         dispatch(displaymovie(data));
@@ -24,10 +28,10 @@ function App() {
     const isMovieFavourite = (movie) => {
       const index = favourites.indexOf(movie);//if index not found return -1;
       if (index > -1) {
-        // found the movie
-        return true;
+    // found the movie
+          return true;
       } else {
-        return false;
+          return false;
       }
     }
   return (
