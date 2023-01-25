@@ -1,17 +1,17 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { addFavourite } from '../actions';
+import { addToFavourite ,removeFromFavourites } from '../actions';
 
 const MovieCard = (props) => {
     const {movie , isFavourite} =props;
     const dispatch =useDispatch();
 
     const handleFavouriteClick = () =>{
-        dispatch(addFavourite(movie));
+        dispatch(addToFavourite(movie));
     }
 
     const handleUnfavouriteClick = () =>{
-
+        dispatch(removeFromFavourites(movie));
     }
   return (
     <div className='movie-card'>
