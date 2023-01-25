@@ -1,10 +1,11 @@
-import { DISPLAY_MOVIES , ADD_TO_FAVOURITE , REMOVE_FROM_FAVOURITE} from '../actions';
+import { DISPLAY_MOVIES , ADD_TO_FAVOURITE , REMOVE_FROM_FAVOURITE , SET_SHOW_FAVOURITE} from '../actions';
 
 
 // this is the initialStage when our movies are not stored in store .
 const initialMoviesState = {
     list :[],
-    favourites :[]
+    favourites :[],
+    showFavourites :false
 }
 
 const movies = (state = initialMoviesState ,action) => {
@@ -39,6 +40,12 @@ const movies = (state = initialMoviesState ,action) => {
                 ...state,
                 favourites: filteredArray
             };
+
+        case SET_SHOW_FAVOURITE:
+            return {
+              ...state,
+              showFavourites: action.val
+            }
 
         // if there is no case match then we return default state.
         default :

@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import { addToFavourite ,removeFromFavourites } from '../actions';
 
 const MovieCard = (props) => {
-    // getting movie and isFavourite in props from app component
-    const {movie , isFavourite} =props;
-    const dispatch =useDispatch();//using dispatch hook to dispatch the action
+    
+    const {movie , isFavourite} =props;// getting movie and isFavourite in props from app component.
+    const dispatch =useDispatch();//using dispatch hook to dispatch the action.
     
     // favourite button click
     const handleFavouriteClick = () =>{
